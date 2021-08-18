@@ -8,4 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public interface AirportRepository extends JpaRepository<Airport, Integer> {
+    Airport findAirportByCode(String code);
+    Airport deleteAirportByCode(String code);
 }
