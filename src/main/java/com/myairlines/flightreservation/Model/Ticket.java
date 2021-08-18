@@ -18,7 +18,7 @@ public class Ticket {
     @GeneratedValue
     private int number;
 
-    @OneToOne(mappedBy = "ticket")
+    @OneToOne
     @JoinColumn(nullable = false, updatable = false)
     private Flight flight;
 }
