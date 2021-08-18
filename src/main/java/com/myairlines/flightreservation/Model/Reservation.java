@@ -2,11 +2,13 @@ package com.myairlines.flightreservation.Model;
 
 import com.myairlines.flightreservation.Model.CustomeGenerator.MyGenerator;
 import com.myairlines.flightreservation.Model.EnumClasses.ReservationStatus;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+@Data
 @Entity
 public class Reservation {
     @Id
