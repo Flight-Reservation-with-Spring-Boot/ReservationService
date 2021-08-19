@@ -3,7 +3,6 @@ package com.myairlines.flightreservation.Model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
 @Data
 @Entity
@@ -13,8 +12,6 @@ public class Ticket {
     private int id;
 
     @Column(nullable = false, updatable = false, unique = true)
-    @Size(min = 10, max = 10)
-    @GeneratedValue
     private int number;
 
     @OneToOne

@@ -34,13 +34,14 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.getReservationByCode(reservationCode));
     }
 
-    @PatchMapping ("/{reservationCode}")
+    @PatchMapping ("/{reservationCode}/cancel")
     public ResponseEntity<?> cancelReservation(@PathVariable("reservationCode") String reservationCode, @RequestBody ReservationDTO reservationDTO) {
         return ResponseEntity.ok(reservationService.cancelReservation(reservationCode, reservationDTO));
     }
 
-    @PatchMapping ("/{reservationCode}/confirm")
-    public ResponseEntity<?> confirmReservation(@PathVariable("reservationCode") String reservationCode, @RequestBody ReservationDTO reservationDTO, @RequestBody Integer flightNumber) {
+    @PatchMapping ("/{reservationCode}/confirm/{flightNumber}")
+    public ResponseEntity<?> confirmReservation(@PathVariable("reservationCode") String reservationCode, @RequestBody ReservationDTO reservationDTO, @PathVariable("flightNumber")
+            Integer flightNumber) {
         return ResponseEntity.ok(reservationService.confirmReservation(reservationCode, reservationDTO, flightNumber));
     }
 

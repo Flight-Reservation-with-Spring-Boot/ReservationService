@@ -1,6 +1,5 @@
 package com.myairlines.flightreservation.DTO.DTOAdaptors;
 
-import com.myairlines.flightreservation.DAO.AirportRepository;
 import com.myairlines.flightreservation.DTO.FlightDTO;
 import com.myairlines.flightreservation.Model.Flight;
 
@@ -26,6 +25,7 @@ public class FlightDTOAdaptor {
         flightDTO.setNumber(flight.getNumber());
         flightDTO.setCapacity(flight.getCapacity());
         flightDTO.setDepartureAirport(flight.getDepartureAirport());
+        flightDTO.setArrivalAirport(flight.getArrivalAirport());
         flightDTO.setDepartureTime(flight.getDepartureTime());
         flightDTO.setArrivalTime(flight.getArrivalTime());
         flightDTO.setFlightStatus(flight.getFlightStatus());

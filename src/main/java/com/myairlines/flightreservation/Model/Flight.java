@@ -3,7 +3,6 @@ package com.myairlines.flightreservation.Model;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Data
@@ -14,8 +13,6 @@ public class Flight {
     private int id;
 
     @Column(unique = true, nullable = false, updatable = false)
-    @Size(min = 6, max = 6)
-    @GeneratedValue
     private int number;
 
     @Column(nullable = false)
