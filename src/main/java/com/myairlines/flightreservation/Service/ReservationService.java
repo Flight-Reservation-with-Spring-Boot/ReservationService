@@ -11,7 +11,6 @@ public interface ReservationService {
     ReservationDTO updateReservation(String reservationCode, ReservationDTO reservationDTO);
     List<ReservationDTO> getReservations(Optional<Integer> page);
     ReservationDTO getReservationByCode(String code);
-//    ReservationDTO confirmReservation(String reservationCode, ReservationDTO reservationDTO);
     TicketDTO confirmReservation(String reservationCode, ReservationDTO reservationDTO, int flightNumber);
     ReservationDTO cancelReservation(String reservationCode, ReservationDTO reservationDTO);
 }

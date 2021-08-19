@@ -10,6 +10,7 @@ public class ReservationDTOAdaptor {
         reservation.setReservationCode(reservationDTO.getReservationCode());
         reservation.setReservationStatus(reservationDTO.getReservationStatus());
         reservation.setTicket(reservationDTO.getTicket());
+        reservation.setPassenger(reservationDTO.getPassenger());
 
         return reservation;
     }
@@ -17,10 +18,10 @@ public class ReservationDTOAdaptor {
     public static ReservationDTO getReservationDto(Reservation reservation) {
         ReservationDTO reservationDTO = new ReservationDTO();
 
-
         reservationDTO.setReservationCode(reservation.getReservationCode());
         reservationDTO.setReservationStatus(reservation.getReservationStatus());
         reservationDTO.setTicket(reservation.getTicket());
+        reservationDTO.setPassenger(reservation.getPassenger());
 
         return reservationDTO;
     }

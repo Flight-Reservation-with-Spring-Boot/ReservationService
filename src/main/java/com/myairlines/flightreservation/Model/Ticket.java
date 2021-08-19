@@ -7,7 +7,6 @@ import javax.validation.constraints.Size;
 
 @Data
 @Entity
-@Table(name = "ticket")
 public class Ticket {
     @Id
     @GeneratedValue

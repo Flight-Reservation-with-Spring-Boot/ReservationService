@@ -26,6 +26,10 @@ public class Reservation {
     @JoinColumn
     private Ticket ticket;
 
+    @OneToOne
+    @JoinColumn
+    private Passenger passenger;
+
     @Column(nullable = false)
     private String reservationStatus;
 }
