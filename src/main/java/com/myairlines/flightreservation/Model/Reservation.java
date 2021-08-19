@@ -1,7 +1,7 @@
 package com.myairlines.flightreservation.Model;
 
 import com.myairlines.flightreservation.Model.CustomeGenerator.MyGenerator;
-import com.myairlines.flightreservation.Model.EnumClasses.ReservationStatus;
+import com.myairlines.flightreservation.EnumClasses.ReservationStatus;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -27,5 +27,5 @@ public class Reservation {
     private Ticket ticket;
 
     @Column(nullable = false)
-    private ReservationStatus reservationStatus;
+    private String reservationStatus;
 }

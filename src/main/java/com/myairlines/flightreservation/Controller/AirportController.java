@@ -23,8 +23,23 @@ public class AirportController {
         return ResponseEntity.ok(service.getAllAirports(page));
     }
 
+    @GetMapping("/{airportCode}")
+    public ResponseEntity<?> getAirportByCode(@PathVariable("airportCode") String airportCode) {
+        return ResponseEntity.ok(service.getAirportByCode(airportCode));
+    }
+
     @PostMapping
-    public ResponseEntity<?> addNewAirport(AirportDTO airportDTO) {
+    public ResponseEntity<?> addNewAirport(@RequestBody AirportDTO airportDTO) {
         return ResponseEntity.ok(service.addNewAirport(airportDTO));
+    }
+
+    @PutMapping("/{airportCode}")
+    public ResponseEntity<?> updateAirport(@PathVariable("airportCode") String airportCode, @RequestBody AirportDTO airportDTO) {
+        return ResponseEntity.ok(service.updateAirport(airportCode, airportDTO));
+    }
+
+    @DeleteMapping("/{airportCode}")
+    public ResponseEntity<?> deleteAirport(@PathVariable("airportCode") String airportCode) {
+        return ResponseEntity.ok(service.deleteAirport(airportCode));
     }
 }

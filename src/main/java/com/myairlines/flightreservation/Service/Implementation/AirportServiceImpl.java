@@ -3,7 +3,6 @@ package com.myairlines.flightreservation.Service.Implementation;
 import com.myairlines.flightreservation.DAO.AirportRepository;
 import com.myairlines.flightreservation.DTO.AirportDTO;
 import com.myairlines.flightreservation.DTO.DTOAdaptors.AirportDTOAdaptor;
-import com.myairlines.flightreservation.DTO.DTOAdaptors.FlightDTOAdaptor;
 import com.myairlines.flightreservation.Model.Airport;
 import com.myairlines.flightreservation.Service.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -27,7 +27,7 @@ public class AirportServiceImpl implements AirportService {
     @Override
     public List<AirportDTO> getAllAirports(Optional<Integer> page) {
         Pageable pagination = PageRequest.of(page.orElse(0), 10);
-        List<AirportDTO> airportDTOList =new ArrayList<>();
+        List<AirportDTO> airportDTOList = new ArrayList<>();
         for (Airport airport : airportRepository.findAll(pagination)) {
             airportDTOList.add(AirportDTOAdaptor.getAirportDto(airport));
         }
@@ -42,22 +42,26 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public AirportDTO update(String airportCode, AirportDTO airportDTO) {
-        Airport updatedAirport = AirportDTOAdaptor.getAirport(airportDTO);
-        Airport airport = airportRepository.findAirportByCode(airportCode);
-        airport.setCode(updatedAirport.getCode());
-        airport.setName(updatedAirport.getName());
-        airport.setAddress(updatedAirport.getAddress());
+    public AirportDTO updateAirport(String airportCode, AirportDTO updatedAirportDTO) {
+        Airport updatedAirport = airportRepository.findAirportByCode(airportCode);
+        if (updatedAirportDTO.getName() != null &&
+                updatedAirportDTO.getName().length() > 1 &&
+                !Objects.equals(updatedAirport.getName(), updatedAirportDTO.getName())) {
+            updatedAirport.setName(updatedAirportDTO.getName());
+        }
 
-        airportRepository.save(airport);
-        return airportDTO;
+        if (updatedAirportDTO.getAddress() != null) {
+            updatedAirport.setAddress(updatedAirportDTO.getAddress());
+        }
+
+        airportRepository.save(updatedAirport);
+        return updatedAirportDTO;
     }
 
     @Override
     public AirportDTO getAirportByCode(String airportCode) {
         Airport airport = airportRepository.findAirportByCode(airportCode);
-        AirportDTO airportDTO = AirportDTOAdaptor.getAirportDto(airport);
-        return airportDTO;
+        return AirportDTOAdaptor.getAirportDto(airport);
     }
 
     @Override

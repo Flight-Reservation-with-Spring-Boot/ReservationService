@@ -10,7 +10,7 @@ public interface AirportService {
 
     AirportDTO addNewAirport(AirportDTO airportDTO);
 
-    AirportDTO update(String airportCode, AirportDTO airportDTO);
+    AirportDTO updateAirport(String airportCode, AirportDTO airportDTO);
 
     AirportDTO getAirportByCode(String airportCode);
 
