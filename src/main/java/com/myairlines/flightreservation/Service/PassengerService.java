@@ -10,4 +10,5 @@ public interface PassengerService {
     PassengerDTO getPassenger(int id);
     PassengerDTO updatePassenger(int id, PassengerDTO passengerDTO);
     PassengerDTO deletePassenger(int id);
+    PassengerDTO addPassenger(PassengerDTO passengerDTO);
 }

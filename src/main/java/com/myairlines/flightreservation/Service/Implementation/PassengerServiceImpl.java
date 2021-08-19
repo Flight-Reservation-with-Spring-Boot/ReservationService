@@ -4,6 +4,7 @@ import com.myairlines.flightreservation.DAO.PassengerRepository;
 import com.myairlines.flightreservation.DTO.DTOAdaptors.PassengerDTOAdaptor;
 import com.myairlines.flightreservation.DTO.PassengerDTO;
 import com.myairlines.flightreservation.Model.Passenger;
+import com.myairlines.flightreservation.Model.Reservation;
 import com.myairlines.flightreservation.Service.PassengerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -70,6 +71,13 @@ public class PassengerServiceImpl implements PassengerService {
         PassengerDTO passengerDTO = PassengerDTOAdaptor.getPassengerDto(deletedPassenger);
         passengerRepository.delete(deletedPassenger);
 
+        return passengerDTO;
+    }
+
+    @Override
+    public PassengerDTO addPassenger(PassengerDTO passengerDTO) {
+        Passenger passenger = PassengerDTOAdaptor.getPassenger(passengerDTO);
+        passengerRepository.save(passenger);
         return passengerDTO;
     }
 }
